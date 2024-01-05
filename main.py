@@ -2,6 +2,7 @@ import pygame
 import random
 import time
 from math import *
+from rect import Rect
 
 
 WIDTH = 700
@@ -18,7 +19,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
-#hyi
+player=Rect(100,100,20,20)
 
 running = True
 while running:
@@ -28,6 +29,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    player.draw(screen)
 
     pygame.display.update()
 pygame.quit()
