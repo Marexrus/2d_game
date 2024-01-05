@@ -11,6 +11,7 @@ FPS = 144
 BLACK = (0, 0, 0)
 GRAY=(128,128,128)
 
+
 pygame.init()
 pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
