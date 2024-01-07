@@ -1,3 +1,5 @@
+#Тут будут функции для движения и все что с этим связанно
+
 def collide(hero, objects):
     # print(hero.x)
     Num_of_collisions = hero.collidelist(objects)

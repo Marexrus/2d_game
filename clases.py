@@ -1,3 +1,5 @@
+#Тут будут все полезные классы
+
 import pygame
 
 class Rect:

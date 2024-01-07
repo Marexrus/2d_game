@@ -2,8 +2,8 @@ import pygame
 import random
 import time
 from math import *
-from rect import Rect
-from collision import *
+from clases import Rect
+from movement import *
 
 
 WIDTH = 700
