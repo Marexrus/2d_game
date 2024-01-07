@@ -3,6 +3,7 @@ import random
 import time
 from math import *
 from rect import Rect
+from collision import *
 
 
 WIDTH = 700
@@ -20,6 +21,7 @@ pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
 player=Rect(100,100,20,20)
+c1=Rect(200,100,20,20)
 
 running = True
 while running:
@@ -29,7 +31,13 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    player.x+=1
+    c1.x-=1
+
+    collide(player,[c1])
+
     player.draw(screen)
+    c1.draw(screen,color=[0,0,255])
 
     pygame.display.update()
 pygame.quit()
