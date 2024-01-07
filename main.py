@@ -21,7 +21,7 @@ pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
 player=Rect(100,100,20,20)
-c1=Rect(200,100,20,20)
+c1=Rect(300,100,20,20)
 
 running = True
 while running:
