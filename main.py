@@ -30,9 +30,9 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
-    player.x+=1
-    c1.x-=1
+    player.x = move(player)
+    player.y = move(player)
+    
 
     collide(player,[c1])
 
