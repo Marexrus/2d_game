@@ -2,9 +2,11 @@ import pygame
 import random
 import time
 from math import *
-from classes import *
 from movement import *
+from classes import *
 import sys
+
+print(objects)
 
 
 WIDTH = 700
@@ -21,12 +23,10 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
-objects=[]
+player=Rect(WIDTH/2-20,HEIGHT/2-20,20,20)
+c1=Rect(300,100,20,20)
 
-player=Rect(WIDTH/2-20,HEIGHT/2-20,20,20,objects)
-c1=Rect(300,100,20,20,objects)
-
-Button(objects,screen,sys.exit,Rect(WIDTH-100,HEIGHT-60,80,40,objects),'Exit',text_pos=[15,15],size=30)
+Button(screen,sys.exit,Rect(WIDTH-100,HEIGHT-60,80,40),'Exit',text_pos=[15,15],size=30)
 
 running = True
 while running:
@@ -37,7 +37,7 @@ while running:
             running = False
 
     mpos = pygame.mouse.get_pos()
-    mrect = Rect(mpos[0],mpos[1],1,1,objects)
+    mrect = Rect(mpos[0],mpos[1],1,1)
     pressed = pygame.mouse.get_pressed()
 
     keys = pygame.key.get_pressed()

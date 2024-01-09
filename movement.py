@@ -1,5 +1,5 @@
-import pygame
 #Тут будут функции для движения и все что с этим связанно
+import pygame
 
 def collide(player, objects):
     # print(player.x)
