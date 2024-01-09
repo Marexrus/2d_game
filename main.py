@@ -23,7 +23,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
-player=Rect(WIDTH/2-20,HEIGHT/2-20,20,20)
+player=Rect(float(WIDTH/2-20),float(HEIGHT/2-20),20,20)
 c1=Rect(300,100,20,20)
 
 Button(screen,sys.exit,Rect(WIDTH-100,HEIGHT-60,80,40),'Exit',text_pos=[15,15],size=30)
@@ -41,14 +41,13 @@ while running:
     pressed = pygame.mouse.get_pressed()
 
     keys = pygame.key.get_pressed()
+    #player.x, player.y = move(keys)
     cords = move(keys)
-    
-    player.x += cords[0]
-    player.y += cords[1]
-    
-    #collide(player,[c1])
-    
 
+    player.x+=cords[0]
+    player.y+=cords[1]
+
+    collide(player,[c1])
 
     label(screen,"Hello world!",[10,10],color=[0,0,0],size=30)
 
