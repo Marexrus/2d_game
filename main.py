@@ -4,6 +4,7 @@ import time
 from math import *
 from clases import *
 from movement import *
+import sys
 
 
 WIDTH = 700
@@ -25,6 +26,8 @@ objects=[]
 player=Rect(100,100,20,20,objects)
 c1=Rect(300,100,20,20,objects)
 
+Button(objects,screen,sys.exit,Rect(10,10,100,60,objects),'None')
+
 running = True
 while running:
     screen.fill(GRAY)
@@ -33,12 +36,22 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    mpos = pygame.mouse.get_pos()
+    mrect = Rect(mpos[0],mpos[1],1,1,objects)
+    pressed = pygame.mouse.get_pressed()
+
     player.x+=1
     c1.x-=1
 
     collide(player,[c1])
 
     label(screen,"Hello world!",[10,10],color=[0,0,0],size=30)
+
+    for el in objects:
+        if el.id == 'button':
+            el.draw(mrect)
+            if pressed[0]:
+                el.check(mrect)
 
     player.draw(screen)
     c1.draw(screen,color=[0,0,255])
