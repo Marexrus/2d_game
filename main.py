@@ -37,11 +37,8 @@ while running:
     keys = pygame.key.get_pressed()
     cords = move(keys)
     
-    #player.x += cords[0]
-    #player.y += cords[1]
-    if not player.colliderect(c1):
-        c1.x -= cords[0]
-        c1.y -= cords[1]
+    player.x += cords[0]
+    player.y += cords[1]
     
     #collide(player,[c1])
     
