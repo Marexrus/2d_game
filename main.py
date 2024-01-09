@@ -2,7 +2,7 @@ import pygame
 import random
 import time
 from math import *
-from clases import Rect
+from clases import *
 from movement import *
 
 
@@ -20,8 +20,10 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
-player=Rect(100,100,20,20)
-c1=Rect(300,100,20,20)
+objects=[]
+
+player=Rect(100,100,20,20,objects)
+c1=Rect(300,100,20,20,objects)
 
 running = True
 while running:
@@ -35,6 +37,8 @@ while running:
     c1.x-=1
 
     collide(player,[c1])
+
+    label(screen,"Hello world!",[10,10],color=[0,0,0],size=30)
 
     player.draw(screen)
     c1.draw(screen,color=[0,0,255])
