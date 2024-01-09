@@ -2,7 +2,7 @@ import pygame
 import random
 import time
 from math import *
-from clases import *
+from classes import *
 from movement import *
 import sys
 
@@ -42,13 +42,16 @@ while running:
 
     keys = pygame.key.get_pressed()
     cords = move(keys)
+    
     #player.x += cords[0]
     #player.y += cords[1]
-    c1.x -= cords[0]
-    c1.y -= cords[1]
-        
+    if not player.colliderect(c1):
+        c1.x -= cords[0]
+        c1.y -= cords[1]
+    
+    #collide(player,[c1])
+    
 
-    collide(player,[c1])
 
     label(screen,"Hello world!",[10,10],color=[0,0,0],size=30)
 
