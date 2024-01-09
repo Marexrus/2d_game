@@ -42,16 +42,40 @@ def collide(player, objects):
     return None
 
 def move(keys):
-    speed = 1 
+    speed_min = 0
+    speed_max = 1
+    speed_current = 0.5 
     cords = [0, 0] # x,y
 
     if keys[pygame.K_UP]:
-        cords[1]-=speed
+        if speed_current < speed_max and speed_current > speed_min:
+            speed_current*=1.2 
+            cords[1]-=speed_current
+    elif speed_current < speed_max and speed_current > speed_min:
+        speed_current/=1.2 
+        cords[1]+=speed_current
+
     if keys[pygame.K_DOWN]:
-        cords[1]+=speed
+        if speed_current < speed_max and speed_current > speed_min:
+            speed_current*=1.2 
+            cords[1]+=speed_current
+    elif speed_current < speed_max and speed_current > speed_min:
+        speed_current/=1.2 
+        cords[1]-=speed_current
+        
     if keys[pygame.K_LEFT]:
-        cords[0]-=speed
+        if speed_current < speed_max and speed_current > speed_min:
+            speed_current*=1.2 
+            cords[1]-=speed_current
+    elif speed_current < speed_max and speed_current > speed_min:
+        speed_current/=1.2 
+        cords[1]+=speed_current
     if keys[pygame.K_RIGHT]:
-        cords[0]+=speed
+        if speed_current < speed_max and speed_current > speed_min:
+            speed_current*=1.2 
+            cords[1]+=speed_current
+    elif speed_current < speed_max and speed_current > speed_min:
+        speed_current/=1.2 
+        cords[1]-=speed_current
  
     return cords    
