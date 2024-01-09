@@ -22,7 +22,7 @@ clock = pygame.time.Clock()
 
 objects=[]
 
-player=Rect(100,100,20,20,objects)
+player=Rect(WIDTH/2-20,HEIGHT/2-20,20,20,objects)
 c1=Rect(300,100,20,20,objects)
 
 running = True
@@ -32,9 +32,15 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    player.x = move(player)
-    player.y = move(player)
-    
+
+
+    keys = pygame.key.get_pressed()
+    cords = move(keys)
+    #player.x += cords[0]
+    #player.y += cords[1]
+    c1.x -= cords[0]
+    c1.y -= cords[1]
+        
 
     collide(player,[c1])
 
