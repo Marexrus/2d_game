@@ -1,3 +1,4 @@
+import pygame
 #Тут будут функции для движения и все что с этим связанно
 
 def collide(hero, objects):
@@ -39,3 +40,21 @@ def collide(hero, objects):
 
         return side
     return None
+
+def move():
+    speed = 1 
+    cords = [0, 0] # x,y
+    
+    for event in pygame.event.get():
+        if event.type == pygame.KEYUP:
+            cords[1]-=speed
+            return cords
+        elif event.type == pygame.KEYDOWN:
+            cords[1]+=speed
+            return cords
+        elif event.type == pygame.K_LEFT:
+            cords[0]-=speed
+            return cords
+        elif event.type == pygame.K_RIGHT:
+            cords[0]+=speed
+            return cords
