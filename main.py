@@ -26,7 +26,7 @@ objects=[]
 player=Rect(WIDTH/2-20,HEIGHT/2-20,20,20,objects)
 c1=Rect(300,100,20,20,objects)
 
-Button(objects,screen,sys.exit,Rect(10,10,100,60,objects),'None')
+Button(objects,screen,sys.exit,Rect(WIDTH-100,HEIGHT-60,80,40,objects),'Exit',text_pos=[15,15],size=30)
 
 running = True
 while running:

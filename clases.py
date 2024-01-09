@@ -61,8 +61,7 @@ class Button:
         self.bg=self.bg0.copy()
         if self.rect.colliderect(mrect.prect):
             self.bg=mas_calc(self.bg,[-20,-20,-20])
-        
-        print(self.bg)
+    
         #print(self.bg)
 
         pygame.draw.rect(self.screen,self.bg,self.rect.prect)
