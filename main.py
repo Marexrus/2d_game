@@ -43,6 +43,10 @@ while running:
     keys = pygame.key.get_pressed()
     cords = move(keys)
     
+    player.x += cords[0]
+    player.y += cords[1]
+    
+    #collide(player,[c1])
     
 
 
