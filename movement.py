@@ -1,5 +1,5 @@
-#Тут будут функции для движения и все что с этим связанно
 import pygame
+#Тут будут функции для движения и все что с этим связанно
 
 def collide(player, objects):
     # print(player.x)
@@ -41,80 +41,85 @@ def collide(player, objects):
         return side
     return None
 
-speed=0.8
-def move(keys):
-    #cords=[0,0]
-    """global speed
-    speed_max=2
-    speed_min=0
-    kf=0.02
+speed=[0,0]
+dir={'up':False,"down":False,"left":False,"right":False}
+
+def move(keys,player):
+    """
+    speed_min = 0
+    speed_max = 1
+    speed_current = 0.5 
+    cords = [0, 0] # x,y
 
     if keys[pygame.K_UP]:
+        if speed_current < speed_max and speed_current > speed_min:
+            speed_current*=kf 
+            cords[1]-=speed_current
+    elif speed_current < speed_max and speed_current > speed_min:
+        speed_current/=kf 
+        cords[1]+=speed_current
+
+    if keys[pygame.K_DOWN]:
+        if speed_current < speed_max and speed_current > speed_min:
+            speed_current*=kf 
+            cords[1]+=speed_current
+    elif speed_current < speed_max and speed_current > speed_min:
+        speed_current/=kf 
+        cords[1]-=speed_current
+        
+    if keys[pygame.K_LEFT]:
+        if speed_current < speed_max and speed_current > speed_min:
+            speed_current*=kf 
+            cords[1]-=speed_current
+    elif speed_current < speed_max and speed_current > speed_min:
+        speed_current/=kf 
+        cords[1]+=speed_current
+    if keys[pygame.K_RIGHT]:
+        if speed_current < speed_max and speed_current > speed_min:
+            speed_current*=kf 
+            cords[1]+=speed_current
+    elif speed_current < speed_max and speed_current > speed_min:
+        speed_current/=kf 
+        cords[1]-=speed_current"""
+    global speed,dir
+
+    kf=0.1
+    speed_min=0
+    speed_max=3
+
+    if keys[pygame.K_UP]:
+        dir['up']=True
         if speed[1] > -speed_max:
             speed[1]-=kf
-
-    if keys[pygame.K_DOWN]:
-        if speed[1] < speed_max:
+        else:
             speed[1]+=kf
 
+    if keys[pygame.K_DOWN]:
+        dir['down']=True
+        if speed[1] < speed_max:
+            speed[1]+=kf
+        else:
+            speed[1]-=kf
     if keys[pygame.K_LEFT]:
+        dir['left']=True
         if speed[0] > -speed_max:
             speed[0]-=kf
-
+        else:
+            speed[0]+=kf
     if keys[pygame.K_RIGHT]:
+        dir['right']=True
         if speed[0] < speed_max:
             speed[0]+=kf
+        else:
+            speed[0]-=kf
     
     if not keys[pygame.K_UP] and not keys[pygame.K_DOWN] and not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
-        if speed[0] != 0 or speed[1] != 0: 
-            if speed[0] < 0:
-                speed[0]+=kf
-            else:
-                speed[0]-=kf
-            
-            if speed[1] < 0:
-                speed[1]+=kf
-            else:
-                speed[1]-=kf
-        if speed[0] <= kf:
-            speed[0]=0
-        if speed[1] <= kf:
-            speed[1]=0
-    
+        speed[0]/=1.1
+        speed[1]/=1.1
+
+    player.y+=speed[1]
     player.x+=speed[0]
-    player.y+=speed[1]"""
 
-    cords=[0,0]
-    speed_max=2
-    speed_min=0.8
-    global speed
-    kf=1.02
-
-    if keys[pygame.K_UP]:
-        if speed < speed_max:
-            speed*=kf
-        cords[1]-=speed
-
-    if keys[pygame.K_DOWN]:
-        if speed < speed_max:
-            speed*=kf
-        cords[1]+=speed
-
-        
-    if keys[pygame.K_LEFT]:
-        if speed < speed_max:
-            speed*=kf
-        cords[0]-=speed
-
-        
-    if keys[pygame.K_RIGHT]:
-        if speed < speed_max:
-            speed*=kf
-        cords[0]+=speed
+    return_mas=[player,dir,speed]
     
-    if not keys[pygame.K_UP] and not keys[pygame.K_DOWN] and not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and speed > speed_min:
-        speed/=kf
-
-    print(speed)
-
-    return cords  
+    return return_mas
