@@ -2,8 +2,11 @@ import pygame
 import random
 import time
 from math import *
-from classes import *
 from movement import *
+from classes import *
+import sys
+
+print(objects)
 
 
 WIDTH = 700
@@ -20,10 +23,10 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
-objects=[]
+player=Rect(float(WIDTH/2-20),float(HEIGHT/2-20),20,20)
+c1=Rect(300,100,20,20)
 
-player=Rect(WIDTH/2-20,HEIGHT/2-20,20,20,objects)
-c1=Rect(300,100,20,20,objects)
+Button(screen,sys.exit,Rect(WIDTH-100,HEIGHT-60,80,40),'Exit',text_pos=[15,15],size=30)
 
 running = True
 while running:
@@ -33,17 +36,26 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    mpos = pygame.mouse.get_pos()
+    mrect = Rect(mpos[0],mpos[1],1,1)
+    pressed = pygame.mouse.get_pressed()
 
     keys = pygame.key.get_pressed()
     moving=move(keys,player)
     player = moving[0]
     pygame.display.set_caption(str(moving[2]))
 
-    
+
+
     collide(player,[c1])
 
-
     label(screen,"Hello world!",[10,10],color=[0,0,0],size=30)
+
+    for el in objects:
+        if el.id == 'button':
+            el.draw(mrect)
+            if pressed[0]:
+                el.check(mrect)
 
     player.draw(screen)
     c1.draw(screen,color=[0,0,255])
