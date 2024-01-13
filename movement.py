@@ -45,46 +45,9 @@ speed=[0,0]
 dir={'up':False,"down":False,"left":False,"right":False}
 
 def move(keys,player):
-    """
-    speed_min = 0
-    speed_max = 1
-    speed_current = 0.5 
-    cords = [0, 0] # x,y
-
-    if keys[pygame.K_UP]:
-        if speed_current < speed_max and speed_current > speed_min:
-            speed_current*=kf 
-            cords[1]-=speed_current
-    elif speed_current < speed_max and speed_current > speed_min:
-        speed_current/=kf 
-        cords[1]+=speed_current
-
-    if keys[pygame.K_DOWN]:
-        if speed_current < speed_max and speed_current > speed_min:
-            speed_current*=kf 
-            cords[1]+=speed_current
-    elif speed_current < speed_max and speed_current > speed_min:
-        speed_current/=kf 
-        cords[1]-=speed_current
-        
-    if keys[pygame.K_LEFT]:
-        if speed_current < speed_max and speed_current > speed_min:
-            speed_current*=kf 
-            cords[1]-=speed_current
-    elif speed_current < speed_max and speed_current > speed_min:
-        speed_current/=kf 
-        cords[1]+=speed_current
-    if keys[pygame.K_RIGHT]:
-        if speed_current < speed_max and speed_current > speed_min:
-            speed_current*=kf 
-            cords[1]+=speed_current
-    elif speed_current < speed_max and speed_current > speed_min:
-        speed_current/=kf 
-        cords[1]-=speed_current"""
     global speed,dir
 
     kf=0.1
-    speed_min=0
     speed_max=3
 
     if keys[pygame.K_UP]:

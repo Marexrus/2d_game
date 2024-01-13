@@ -6,8 +6,6 @@ from movement import *
 from classes import *
 import sys
 
-print(objects)
-
 
 WIDTH = 700
 HEIGHT = 700
@@ -26,7 +24,7 @@ clock = pygame.time.Clock()
 player=Rect(float(WIDTH/2-20),float(HEIGHT/2-20),20,20)
 c1=Rect(300,100,80,20)
 
-Button(screen,sys.exit,Rect(WIDTH-100,HEIGHT-60,70,40),'Exit',text_pos=[12,12],size=30)
+Button(screen,sys.exit,Rect(WIDTH-100,HEIGHT-60,70,40),'Exit',text_pos=[12,12],size=30,bg=[255,0,0])
 
 running = True
 while running:
@@ -38,7 +36,7 @@ while running:
 
     mpos = pygame.mouse.get_pos()
     mrect = Rect(mpos[0],mpos[1],1,1)
-    pressed = pygame.mouse.get_pressed()
+    mouse_pressed = pygame.mouse.get_pressed()
 
     keys = pygame.key.get_pressed()
     moving = move(keys,player)
@@ -53,7 +51,7 @@ while running:
     for el in objects:
         if el.id == 'button':
             el.draw(mrect)
-            if pressed[0]:
+            if mouse_pressed[0]:
                 el.check(mrect)
 
     player.draw(screen)

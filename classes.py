@@ -4,7 +4,10 @@ objects=[]
 
 def mas_calc(m1,m2):
     for i in range(len(m1)):
-        m1[i]+=m2[i]
+        if m1[i] + m2[i] < 0:
+            m1[i]=0
+        else:
+            m1[i]+=m2[i]
     return m1
 
 class Rect:
