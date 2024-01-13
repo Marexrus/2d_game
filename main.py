@@ -35,13 +35,12 @@ while running:
 
 
     keys = pygame.key.get_pressed()
-    cords = move(keys)
+    moving=move(keys,player)
+    player = moving[0]
+    pygame.display.set_caption(str(moving[2]))
+
     
-    player.x += cords[0]
-    player.y += cords[1]
-    
-    #collide(player,[c1])
-    
+    collide(player,[c1])
 
 
     label(screen,"Hello world!",[10,10],color=[0,0,0],size=30)

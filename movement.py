@@ -41,9 +41,10 @@ def collide(player, objects):
         return side
     return None
 
-speed=0.8
+speed=[0,0]
+dir={'up':False,"down":False,"left":False,"right":False}
 
-def move(keys):
+def move(keys,player):
     """
     speed_min = 0
     speed_max = 1
@@ -80,38 +81,60 @@ def move(keys):
     elif speed_current < speed_max and speed_current > speed_min:
         speed_current/=kf 
         cords[1]-=speed_current"""
-    cords=[0,0]
+    global speed,dir
 
-    speed_max=2
-    speed_min=0.8
-    global speed
-    kf=1.03
+    kf=0.1
+    speed_min=0
+    speed_max=3
 
     if keys[pygame.K_UP]:
-        if speed < speed_max:
-            speed*=kf
-        cords[1]-=speed
+        dir['up']=True
+        if speed[1] > -speed_max:
+            speed[1]-=kf
+        else:
+            speed[1]+=kf
 
     if keys[pygame.K_DOWN]:
-        if speed < speed_max:
-            speed*=kf
-        cords[1]+=speed
-
-        
+        dir['down']=True
+        if speed[1] < speed_max:
+            speed[1]+=kf
+        else:
+            speed[1]-=kf
     if keys[pygame.K_LEFT]:
-        if speed < speed_max:
-            speed*=kf
-        cords[0]-=speed
-
-        
+        dir['left']=True
+        if speed[0] > -speed_max:
+            speed[0]-=kf
+        else:
+            speed[0]+=kf
     if keys[pygame.K_RIGHT]:
-        if speed < speed_max:
-            speed*=kf
-        cords[0]+=speed
+        dir['right']=True
+        if speed[0] < speed_max:
+            speed[0]+=kf
+        else:
+            speed[0]-=kf
     
-    if not keys[pygame.K_UP] and not keys[pygame.K_DOWN] and not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and speed > speed_min:
-        speed/=kf
+    if not keys[pygame.K_UP] and not keys[pygame.K_DOWN] and not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
+        #print(1)
+        """if dir['up']:
+            if speed[1] >= speed_min:
+                speed[1]+=kf
+        if dir['down']:
+            if speed[1] >= speed_min:
+                speed[1]-=kf
+        if dir['left']:
+            if speed[0] >= speed_min:
+                speed[0]+=kf
+        if dir['right']:
+            if speed[0] >= speed_min:
+                speed[0]-=kf"""
 
-    print(speed)
 
-    return cords    
+        speed[0]/=1.1
+        speed[1]/=1.1
+
+    player.y+=speed[1]
+    player.x+=speed[0]
+
+    return_mas=[player,dir,speed]
+    
+    return return_mas
