@@ -56,6 +56,8 @@ def move(keys,player):
             speed[1]-=kf
         else:
             speed[1]+=kf
+    else:
+        dir['up']=False
 
     if keys[pygame.K_DOWN]:
         dir['down']=True
@@ -63,18 +65,26 @@ def move(keys,player):
             speed[1]+=kf
         else:
             speed[1]-=kf
+    else:
+        dir['down']=False
+
     if keys[pygame.K_LEFT]:
         dir['left']=True
         if speed[0] > -speed_max:
             speed[0]-=kf
         else:
             speed[0]+=kf
+    else:
+        dir['left']=False
+
     if keys[pygame.K_RIGHT]:
         dir['right']=True
         if speed[0] < speed_max:
             speed[0]+=kf
         else:
             speed[0]-=kf
+    else:
+        dir['right']=False
     
     if not keys[pygame.K_UP] and not keys[pygame.K_DOWN] and not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
         speed[0]/=1.1

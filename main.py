@@ -21,10 +21,10 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
-player=Rect(float(WIDTH/2-20),float(HEIGHT/2-20),20,20)
-c1=Rect(300,100,80,20)
+player=Rect(float(WIDTH/2-20),float(HEIGHT/2-20),20,20,camera=True)
+c1=Rect(300,100,80,20,camera=True)
 
-Button(screen,sys.exit,Rect(WIDTH-100,HEIGHT-60,70,40),'Exit',text_pos=[12,12],size=30,bg=[255,0,0])
+Button(screen,sys.exit,Rect(WIDTH-100,HEIGHT-60,70,40),'Exit',text_pos=[12,12],size=30)
 
 running = True
 while running:
@@ -40,9 +40,9 @@ while running:
 
     keys = pygame.key.get_pressed()
     moving = move(keys,player)
-    player=moving[0]
+    #player=moving[0]
 
-    pygame.display.set_caption(str(moving[2]))
+    pygame.display.set_caption(str(moving[1]))
 
     collide(player,[c1])
 

@@ -11,12 +11,13 @@ def mas_calc(m1,m2):
     return m1
 
 class Rect:
-    def __init__(self,x,y,width,height):
+    def __init__(self,x,y,width,height,camera=False):
         self.id='rect'
         self.x = x
         self.y = y
         self.width = width
         self.height = height
+        self.camera=camera
         self.prect = pygame.Rect(self.x, self.y, self.width, self.height)
         objects.append(self)
 
