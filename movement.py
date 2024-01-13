@@ -114,21 +114,6 @@ def move(keys,player):
             speed[0]-=kf
     
     if not keys[pygame.K_UP] and not keys[pygame.K_DOWN] and not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
-        #print(1)
-        """if dir['up']:
-            if speed[1] >= speed_min:
-                speed[1]+=kf
-        if dir['down']:
-            if speed[1] >= speed_min:
-                speed[1]-=kf
-        if dir['left']:
-            if speed[0] >= speed_min:
-                speed[0]+=kf
-        if dir['right']:
-            if speed[0] >= speed_min:
-                speed[0]-=kf"""
-
-
         speed[0]/=1.1
         speed[1]/=1.1
 

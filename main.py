@@ -6,7 +6,6 @@ from movement import *
 from classes import *
 import sys
 
-print(objects)
 
 
 WIDTH = 700
@@ -50,12 +49,6 @@ while running:
     collide(player,[c1])
 
     label(screen,"Hello world!",[10,10],color=[0,0,0],size=30)
-
-    for el in objects:
-        if el.id == 'button':
-            el.draw(mrect)
-            if pressed[0]:
-                el.check(mrect)
 
     player.draw(screen)
     c1.draw(screen,color=[0,0,255])
