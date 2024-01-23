@@ -11,13 +11,15 @@ def mas_calc(m1,m2):
     return m1
 
 class Rect:
-    def __init__(self,x,y,width,height,camera=False):
+    def __init__(self,x,y,width,height,camera=True,collision=True,drawing=True):
         self.id='rect'
         self.x = x
         self.y = y
         self.width = width
         self.height = height
         self.camera=camera
+        self.collision=collision
+        self.drawing=drawing
         self.prect = pygame.Rect(self.x, self.y, self.width, self.height)
         objects.append(self)
 
@@ -34,7 +36,7 @@ class Rect:
         return self.prect.collidelist(arr)
 
     def draw(self,screen,color=[255,0,0]):
-        pygame.draw.rect(screen,color,self.prect)
+        pygame.draw.rect(screen,color,[self.x,self.y,self.width,self.height])
         
 def label(screen,text, pos,color=[255,0,255],size=48,f=None):
     font = pygame.font.Font(f, size)
@@ -65,7 +67,7 @@ class Button:
         label(self.screen,self.text,[self.rect.x,self.rect.y])
     def draw(self,mrect):
         self.bg=self.bg0.copy()
-        if self.rect.colliderect(mrect.prect):
+        if self.rect.colliderect(pygame.Rect(mrect.x,mrect.y,1,1)):
             self.bg=mas_calc(self.bg,[-20,-20,-20])
 
         pygame.draw.rect(self.screen,self.bg,self.rect.prect)
@@ -73,5 +75,5 @@ class Button:
 
     def check(self, mrect):
         # self.mrect = mrect
-        if self.rect.colliderect(mrect.prect):
+        if self.rect.colliderect(pygame.Rect(mrect.x,mrect.y,1,1)):
             self.func()
